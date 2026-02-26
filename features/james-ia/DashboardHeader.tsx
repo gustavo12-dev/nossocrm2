@@ -10,7 +10,7 @@ export function DashboardHeader() {
   const { darkMode, toggleDarkMode } = useTheme();
 
   return (
-    <header className="col-span-full flex flex-wrap items-center justify-between gap-4 border-b border-zinc-800 bg-zinc-950/80 px-4 py-3 backdrop-blur-sm">
+    <header className="flex h-full flex-wrap items-center justify-between gap-4 px-4">
       <div className="flex items-center gap-4">
         <div className="flex items-center gap-2">
           <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-green-500/20 text-green-400">
@@ -35,10 +35,10 @@ export function DashboardHeader() {
           <input
             type="search"
             placeholder="Buscar clientes, colaborador"
-            className="w-full rounded-lg border border-zinc-800 bg-zinc-900 py-2 pl-10 pr-4 text-sm text-zinc-200 placeholder:text-zinc-500 focus:border-green-500/50 focus:outline-none focus:ring-1 focus:ring-green-500/30"
+            className="w-full rounded-lg border border-white/10 bg-zinc-950 py-2 pl-10 pr-4 text-sm text-green-400 outline-none placeholder:text-zinc-600 focus:border-green-500 focus:ring-1 focus:ring-green-500"
             aria-label="Buscar"
           />
-          <kbd className="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-zinc-700 bg-zinc-800/80 px-2 py-0.5 text-xs text-zinc-400">
+          <kbd className="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-white/10 bg-zinc-900 px-2 py-0.5 text-xs text-zinc-400">
             Ctrl+K
           </kbd>
         </div>
@@ -50,7 +50,7 @@ export function DashboardHeader() {
         </span>
         <button
           type="button"
-          className="flex items-center gap-2 rounded-lg border border-zinc-700 bg-transparent px-3 py-2 text-sm font-medium text-zinc-300 transition-colors hover:border-zinc-600 hover:bg-zinc-800/50 hover:text-white"
+          className="flex items-center gap-2 rounded-lg border border-white/10 bg-transparent px-3 py-2 text-sm font-medium text-zinc-300 transition-colors hover:border-white/20 hover:bg-white/5 hover:text-white"
         >
           <RefreshCw className="h-4 w-4" aria-hidden />
           Atualizar Prompts

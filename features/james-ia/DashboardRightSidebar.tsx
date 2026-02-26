@@ -4,11 +4,14 @@ import { useDashboardData } from '@/hooks/useDashboardData';
 import { Wifi, Database } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
+const GLASS_CARD_CLASS =
+  'rounded-xl border border-white/5 bg-zinc-900/30 p-4 backdrop-blur-md transition-all hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]';
+
 export function DashboardRightSidebar() {
   const data = useDashboardData();
 
   return (
-    <aside className="flex flex-col gap-4 overflow-y-auto p-4">
+    <>
       <GlassCard title="Conectividade" icon={<Wifi className="h-4 w-4 text-green-400/80" aria-hidden />}>
         <div className="flex flex-col gap-2 text-xs">
           <div className="flex items-center justify-between gap-2">
@@ -46,7 +49,7 @@ export function DashboardRightSidebar() {
           </div>
         </div>
       </GlassCard>
-    </aside>
+    </>
   );
 }
 
@@ -62,12 +65,7 @@ function GlassCard({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        'rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 transition-shadow hover:shadow-[0_0_20px_rgba(34,197,94,0.08)]',
-        className
-      )}
-    >
+    <div className={cn(GLASS_CARD_CLASS, className)}>
       <div className="mb-3 flex items-center gap-2">
         {icon}
         <h3 className="text-sm font-semibold text-zinc-300">{title}</h3>

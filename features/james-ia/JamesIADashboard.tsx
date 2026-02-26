@@ -9,33 +9,39 @@ import { DashboardFooter } from './DashboardFooter';
 
 export function JamesIADashboard() {
   return (
-    <div className="grid min-h-full grid-cols-[1fr] grid-rows-[auto_1fr_auto] bg-[#050505] md:grid-cols-[240px_1fr_240px] lg:grid-cols-[280px_1fr_280px] md:h-[calc(100vh-4rem)]">
-      <div className="col-span-full">
+    <div className="flex h-screen w-full flex-col overflow-hidden bg-zinc-950 text-white">
+      <header className="h-16 shrink-0 border-b border-white/5">
         <DashboardHeader />
+      </header>
+
+      <div className="grid min-h-0 min-w-0 flex-1 grid-cols-[300px_1fr_300px] overflow-hidden">
+        <aside className="overflow-y-auto p-4">
+          <div className="flex flex-col gap-4">
+            <DashboardLeftSidebar />
+          </div>
+        </aside>
+
+        <main className="flex min-w-0 items-center justify-center overflow-y-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="w-full"
+          >
+            <AtomAnimation />
+          </motion.div>
+        </main>
+
+        <aside className="overflow-y-auto p-4">
+          <div className="flex flex-col gap-4">
+            <DashboardRightSidebar />
+          </div>
+        </aside>
       </div>
 
-      <div className="hidden min-h-0 overflow-y-auto md:block">
-        <DashboardLeftSidebar />
-      </div>
-
-      <main className="flex min-h-0 min-w-0 flex-col items-center justify-center overflow-auto px-4 py-8">
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, ease: 'easeOut' }}
-          className="w-full max-w-lg"
-        >
-          <AtomAnimation />
-        </motion.div>
-      </main>
-
-      <div className="hidden min-h-0 overflow-y-auto lg:block">
-        <DashboardRightSidebar />
-      </div>
-
-      <div className="col-span-full">
+      <footer className="h-12 shrink-0 border-t border-white/5">
         <DashboardFooter />
-      </div>
+      </footer>
     </div>
   );
 }

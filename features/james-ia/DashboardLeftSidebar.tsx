@@ -6,6 +6,9 @@ import { Monitor, Shield, Save, Pin } from 'lucide-react';
 import { useOptionalToast } from '@/context/ToastContext';
 import { cn } from '@/lib/utils';
 
+const GLASS_CARD_CLASS =
+  'rounded-xl border border-white/5 bg-zinc-900/30 p-4 backdrop-blur-md transition-all hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]';
+
 export function DashboardLeftSidebar() {
   const data = useDashboardData();
   const { addToast } = useOptionalToast();
@@ -16,7 +19,7 @@ export function DashboardLeftSidebar() {
   };
 
   return (
-    <aside className="flex flex-col gap-4 overflow-y-auto p-4">
+    <>
       <GlassCard title="Sistema" icon={<Monitor className="h-4 w-4 text-green-400/80" aria-hidden />}>
         <div className="flex flex-wrap gap-2">
           <MetricBadge label="RAM" value={`${data.ram}%`} />
@@ -52,7 +55,7 @@ export function DashboardLeftSidebar() {
             value={assistantId}
             onChange={(e) => setAssistantId(e.target.value)}
             placeholder="elevenlabs-agent-id"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900/80 px-3 py-2 text-sm text-zinc-200 placeholder:text-zinc-500 focus:border-green-500/50 focus:outline-none focus:ring-1 focus:ring-green-500/30"
+            className="w-full rounded-lg border border-white/10 bg-zinc-950 px-3 py-2 text-sm text-green-400 outline-none placeholder:text-zinc-600 focus:border-green-500 focus:ring-1 focus:ring-green-500"
           />
           <button
             type="button"
@@ -64,7 +67,7 @@ export function DashboardLeftSidebar() {
           </button>
         </div>
       </GlassCard>
-    </aside>
+    </>
   );
 }
 
@@ -80,12 +83,7 @@ function GlassCard({
   className?: string;
 }) {
   return (
-    <div
-      className={cn(
-        'rounded-xl border border-zinc-800 bg-zinc-900/40 p-4 transition-shadow hover:shadow-[0_0_20px_rgba(34,197,94,0.08)]',
-        className
-      )}
-    >
+    <div className={cn(GLASS_CARD_CLASS, className)}>
       <div className="mb-3 flex items-center gap-2">
         {icon}
         <h3 className="text-sm font-semibold text-zinc-300">{title}</h3>
@@ -97,7 +95,7 @@ function GlassCard({
 
 function MetricBadge({ label, value }: { label: string; value: string }) {
   return (
-    <div className="rounded-lg border border-zinc-700/80 bg-zinc-800/50 px-3 py-2">
+    <div className="rounded-lg border border-white/5 bg-zinc-800/50 px-3 py-2">
       <span className="block text-[10px] uppercase tracking-wider text-zinc-500">{label}</span>
       <span className="text-sm font-semibold text-green-400/90">{value}</span>
     </div>
