@@ -261,6 +261,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
 
         <nav className={`flex-1 p-4 space-y-2 flex flex-col ${sidebarCollapsed ? 'items-center px-2' : ''}`} aria-label="Navegação do sistema">
           {[
+            { to: '/james-ia', icon: Sparkles, label: 'James IA', prefetch: 'james-ia' as const },
             { to: '/inbox', icon: Inbox, label: 'Inbox', prefetch: 'inbox' as const },
             { to: '/dashboard', icon: LayoutDashboard, label: 'Visão Geral', prefetch: 'dashboard' as const },
             { to: '/boards', icon: KanbanSquare, label: 'Boards', prefetch: 'boards' as const },
