@@ -27,7 +27,14 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className="dark" suppressHydrationWarning>
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var d=document.documentElement;try{var m=localStorage.getItem('crm_dark_mode');if(m!==null){if(m==='false')d.classList.remove('dark');else d.classList.add('dark');}else d.classList.add('dark');}catch(e){d.classList.add('dark');}})();`,
+          }}
+        />
+      </head>
       <body className={`${inter.variable} font-sans antialiased bg-[var(--color-bg)] text-[var(--color-text-primary)]`}>
         <ServiceWorkerRegister />
         <InstallBanner />

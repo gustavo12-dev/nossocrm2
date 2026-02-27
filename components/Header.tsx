@@ -8,9 +8,12 @@ import {
   HelpCircle,
   Settings,
   Sparkles,
+  Sun,
+  Moon,
 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import { useCRM } from '@/context/CRMContext';
+import { useTheme } from '@/context/ThemeContext';
 import { NotificationPopover } from '@/components/notifications/NotificationPopover';
 import { cn } from '@/lib/utils';
 
@@ -21,6 +24,7 @@ import { cn } from '@/lib/utils';
 export function Header() {
   const { profile } = useAuth();
   const { isGlobalAIOpen, setIsGlobalAIOpen } = useCRM();
+  const { darkMode, toggleDarkMode } = useTheme();
   const [searchFocused, setSearchFocused] = useState(false);
 
   const displayName =
@@ -125,6 +129,14 @@ export function Header() {
             aria-label="Configurações"
           >
             <Settings size={20} aria-hidden />
+          </button>
+          <button
+            type="button"
+            onClick={toggleDarkMode}
+            className="rounded-lg p-2 text-zinc-400 transition-colors hover:bg-white/5 hover:text-white focus-visible:outline focus-visible:ring-2 focus-visible:ring-green-500/50"
+            aria-label={darkMode ? 'Alternar para tema claro' : 'Alternar para tema escuro'}
+          >
+            {darkMode ? <Moon size={20} aria-hidden /> : <Sun size={20} aria-hidden />}
           </button>
         </div>
         {/* Card do usuário */}
