@@ -36,12 +36,15 @@ export function useDashboardData(): DashboardData {
   }, []);
 
   useEffect(() => {
-    const interval = setInterval(refresh, 1500);
+    const interval = setInterval(refresh, 2000);
     return () => clearInterval(interval);
   }, [refresh]);
 
   return data;
 }
+
+/** Alias para uso no dashboard James IA (mesmos dados, intervalo 2s, processamento 70–90%). */
+export const useMockData = useDashboardData;
 
 function getNextMock(): DashboardData {
   const now = new Date();
@@ -58,7 +61,7 @@ function getNextMock(): DashboardData {
     consultas: randomBetween(1200, 1300),
     sincronizacaoOk: true,
     backupAtras: '2h atrás',
-    processamento: randomBetween(15, 40),
+    processamento: randomBetween(70, 90),
     atividade: atividades[randomBetween(0, 2)],
     conexoes: randomBetween(240, 255),
     dataHora: now,

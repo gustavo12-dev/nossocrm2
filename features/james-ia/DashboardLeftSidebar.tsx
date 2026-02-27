@@ -21,9 +21,27 @@ export function DashboardLeftSidebar() {
   return (
     <>
       <GlassCard title="Sistema" icon={<Monitor className="h-4 w-4 text-green-400/80" aria-hidden />}>
-        <div className="flex flex-wrap gap-2">
-          <MetricBadge label="RAM" value={`${data.ram}%`} />
-          <MetricBadge label="REDE" value={data.rede} />
+        <div className="flex flex-col gap-2">
+          <div className="flex flex-wrap gap-2">
+            <MetricBadge label="RAM" value={`${data.ram}%`} />
+            <MetricBadge label="REDE" value={data.rede} />
+          </div>
+          <div className="mt-2">
+            <div className="mb-1 flex justify-between text-[10px] uppercase tracking-wider text-zinc-500">
+              <span>RAM</span>
+              <span className="font-medium text-green-400/90">{data.ram}%</span>
+            </div>
+            <div className="h-2 w-full overflow-hidden rounded-full bg-zinc-800">
+              <div
+                className="h-full rounded-full bg-green-500/80 transition-all duration-500"
+                style={{ width: `${Math.min(100, data.ram)}%` }}
+                role="progressbar"
+                aria-valuenow={data.ram}
+                aria-valuemin={0}
+                aria-valuemax={100}
+              />
+            </div>
+          </div>
         </div>
       </GlassCard>
 
