@@ -111,8 +111,8 @@ function NavButton({
   const className = cn(
     'flex w-full cursor-pointer items-center gap-3 overflow-hidden whitespace-nowrap rounded-lg p-2.5 text-sm transition-all',
     isActive
-      ? 'border border-green-500/20 bg-green-500/10 text-green-400'
-      : 'text-zinc-400 hover:bg-white/5 hover:text-white'
+      ? 'border border-green-500/20 bg-green-500/10 text-green-600 dark:text-green-400'
+      : 'text-slate-600 hover:bg-slate-200 hover:text-slate-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-white'
   );
 
   if (to === '#') {
@@ -153,22 +153,22 @@ export function AppSidebar() {
   return (
     <aside
       className={cn(
-        'fixed left-0 top-0 z-50 flex h-screen w-64 flex-col border-r border-white/10 bg-zinc-900/95 backdrop-blur-md transition-transform duration-300 ease-in-out',
-        isSidebarOpen ? 'translate-x-0 shadow-[20px_0_30px_rgba(0,0,0,0.5)]' : '-translate-x-[calc(100%-12px)]'
+        'fixed left-0 top-0 z-50 flex h-screen w-64 flex-col border-r border-slate-200 bg-white/95 backdrop-blur-md transition-transform duration-300 ease-in-out dark:border-white/10 dark:bg-zinc-900/95 dark:shadow-[20px_0_30px_rgba(0,0,0,0.5)]',
+        isSidebarOpen ? 'translate-x-0 shadow-xl dark:shadow-[20px_0_30px_rgba(0,0,0,0.5)]' : '-translate-x-[calc(100%-12px)]'
       )}
       style={{ width: SIDEBAR_WIDTH }}
       onMouseEnter={() => setIsSidebarOpen(true)}
       onMouseLeave={() => setIsSidebarOpen(false)}
       aria-label="Menu principal"
     >
-      <div className="flex h-14 shrink-0 items-center justify-between border-b border-white/5 px-3">
+      <div className="flex h-14 shrink-0 items-center justify-between border-b border-slate-200 px-3 dark:border-white/5">
         <div className="flex min-w-0 items-center gap-3">
           <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-lg font-bold text-white shadow-lg" aria-hidden>
             N
           </div>
-          <span className="truncate text-base font-bold text-white">NossoCRM</span>
+          <span className="truncate text-base font-bold text-slate-900 dark:text-white">NossoCRM</span>
         </div>
-        <span className="shrink-0 text-zinc-400" aria-hidden>
+        <span className="shrink-0 text-slate-500 dark:text-zinc-400" aria-hidden>
           {isSidebarOpen ? <ChevronLeft size={20} /> : <ChevronRight size={20} />}
         </span>
       </div>
@@ -179,7 +179,7 @@ export function AppSidebar() {
       >
         {BLOCKS.map((block) => (
           <div key={block.title} className="px-2">
-            <p className="mb-2 mt-4 px-3 text-[10px] font-bold uppercase tracking-wider text-zinc-500 first:mt-0">
+            <p className="mb-2 mt-4 px-3 text-[10px] font-bold uppercase tracking-wider text-slate-500 first:mt-0 dark:text-zinc-500">
               {block.title}
             </p>
             <div className="space-y-0.5">
@@ -201,18 +201,18 @@ export function AppSidebar() {
         ))}
       </nav>
 
-      <div className="mt-auto shrink-0 border-t border-white/5 pt-4">
+      <div className="mt-auto shrink-0 border-t border-slate-200 pt-4 dark:border-white/5">
         <div className="flex flex-wrap gap-2 px-3 pb-2">
           <button
             type="button"
-            className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-zinc-500 transition-colors hover:bg-white/5 hover:text-zinc-300"
+            className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:text-zinc-500 dark:hover:bg-white/5 dark:hover:text-zinc-300"
           >
             <Zap size={14} aria-hidden />
             Modo Essencial
           </button>
           <button
             type="button"
-            className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-zinc-500 transition-colors hover:bg-white/5 hover:text-zinc-300"
+            className="flex items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs text-slate-500 transition-colors hover:bg-slate-100 hover:text-slate-700 dark:text-zinc-500 dark:hover:bg-white/5 dark:hover:text-zinc-300"
           >
             <MessageCircle size={14} aria-hidden />
             Suporte WhatsApp
@@ -223,7 +223,7 @@ export function AppSidebar() {
           <button
             type="button"
             onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-            className="flex w-full cursor-pointer items-center gap-3 rounded-xl border border-white/5 bg-white/5 p-3 transition-colors hover:bg-white/10 focus-visible:outline focus-visible:ring-2 focus-visible:ring-green-500/50"
+            className="flex w-full cursor-pointer items-center gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 transition-colors hover:bg-slate-100 focus-visible:outline focus-visible:ring-2 focus-visible:ring-green-500/50 dark:border-white/5 dark:bg-white/5 dark:hover:bg-white/10"
           >
             {profile?.avatar_url ? (
               <Image
@@ -231,31 +231,31 @@ export function AppSidebar() {
                 alt=""
                 width={40}
                 height={40}
-                className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-white/10"
+                className="h-10 w-10 shrink-0 rounded-full object-cover ring-2 ring-slate-200 dark:ring-white/10"
                 unoptimized
               />
             ) : (
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white ring-2 ring-white/10" aria-hidden>
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-600 text-sm font-bold text-white ring-2 ring-slate-200 dark:ring-white/10" aria-hidden>
                 {initials}
               </div>
             )}
             <div className="min-w-0 flex-1 text-left">
-              <p className="truncate text-sm font-medium text-white">{displayName}</p>
-              <p className="truncate text-xs text-zinc-500">{displayEmail}</p>
+              <p className="truncate text-sm font-medium text-slate-900 dark:text-white">{displayName}</p>
+              <p className="truncate text-xs text-slate-500 dark:text-zinc-500">{displayEmail}</p>
             </div>
           </button>
 
           {isUserMenuOpen && (
             <>
               <div className="fixed inset-0 z-40" onClick={() => setIsUserMenuOpen(false)} aria-hidden />
-              <div className="absolute bottom-full left-3 right-3 z-50 mb-2 overflow-hidden rounded-xl border border-white/10 bg-zinc-900 shadow-xl backdrop-blur-md">
+              <div className="absolute bottom-full left-3 right-3 z-50 mb-2 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-xl backdrop-blur-md dark:border-white/10 dark:bg-zinc-900">
                 <div className="p-1">
                   <Link
                     href="/profile"
                     onClick={() => setIsUserMenuOpen(false)}
-                    className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-zinc-300 transition-colors hover:bg-white/5 hover:text-white"
+                    className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-slate-700 transition-colors hover:bg-slate-100 dark:text-zinc-300 dark:hover:bg-white/5 dark:hover:text-white"
                   >
-                    <User className="h-4 w-4 text-zinc-500" aria-hidden />
+                    <User className="h-4 w-4 text-slate-500 dark:text-zinc-500" aria-hidden />
                     Editar Perfil
                   </Link>
                   <button
@@ -264,7 +264,7 @@ export function AppSidebar() {
                       setIsUserMenuOpen(false);
                       signOut();
                     }}
-                    className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-red-400 transition-colors hover:bg-red-500/10"
+                    className="flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-red-600 transition-colors hover:bg-red-50 dark:text-red-400 dark:hover:bg-red-500/10"
                   >
                     <LogOut className="h-4 w-4" aria-hidden />
                     Sair da conta
