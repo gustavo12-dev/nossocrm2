@@ -9,12 +9,12 @@ import { DashboardFooter } from './DashboardFooter';
 
 export function JamesIADashboard() {
   return (
-    <div className="flex h-screen w-full flex-col overflow-hidden bg-zinc-950 text-white">
+    <div className="h-screen w-full overflow-hidden bg-zinc-950 text-white flex flex-col">
       <header className="h-16 shrink-0 border-b border-white/5">
         <DashboardHeader />
       </header>
 
-      <div className="grid min-h-0 min-w-0 flex-1 grid-cols-[300px_1fr_300px] overflow-hidden">
+      <div className="flex-1 grid grid-cols-[300px_1fr_300px] min-h-0 overflow-hidden">
         <aside className="overflow-y-auto p-4">
           <div className="flex flex-col gap-4">
             <DashboardLeftSidebar />

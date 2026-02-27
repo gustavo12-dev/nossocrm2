@@ -7,7 +7,7 @@ import { useOptionalToast } from '@/context/ToastContext';
 import { cn } from '@/lib/utils';
 
 const GLASS_CARD_CLASS =
-  'rounded-xl border border-white/5 bg-zinc-900/30 p-4 backdrop-blur-md transition-all hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]';
+  'bg-zinc-900/30 backdrop-blur-md border border-white/5 rounded-xl p-4 transition-all hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]';
 
 export function DashboardLeftSidebar() {
   const data = useDashboardData();
@@ -44,7 +44,7 @@ export function DashboardLeftSidebar() {
         </div>
       </GlassCard>
 
-      <GlassCard title="Conexão ElevenLabs" icon={<Pin className="h-4 w-4 text-green-400/80" aria-hidden />}>
+      <GlassCard title="Console ElementLabs" icon={<Pin className="h-4 w-4 text-green-400/80" aria-hidden />}>
         <div className="flex flex-col gap-3">
           <label htmlFor="james-assistant-id" className="sr-only">
             Assistant ID
@@ -55,7 +55,7 @@ export function DashboardLeftSidebar() {
             value={assistantId}
             onChange={(e) => setAssistantId(e.target.value)}
             placeholder="elevenlabs-agent-id"
-            className="w-full rounded-lg border border-white/10 bg-zinc-950 px-3 py-2 text-sm text-green-400 outline-none placeholder:text-zinc-600 focus:border-green-500 focus:ring-1 focus:ring-green-500"
+            className="w-full rounded-lg bg-zinc-950 border border-white/10 text-green-400 px-3 py-2 text-sm outline-none placeholder:text-zinc-600 focus:border-green-500 focus:ring-1 focus:ring-green-500"
           />
           <button
             type="button"

@@ -35,7 +35,7 @@ export function DashboardHeader() {
           <input
             type="search"
             placeholder="Buscar clientes, colaborador"
-            className="w-full rounded-lg border border-white/10 bg-zinc-950 py-2 pl-10 pr-4 text-sm text-green-400 outline-none placeholder:text-zinc-600 focus:border-green-500 focus:ring-1 focus:ring-green-500"
+            className="w-full rounded-lg bg-zinc-950 border border-white/10 text-green-400 py-2 pl-10 pr-4 text-sm outline-none placeholder:text-zinc-600 focus:border-green-500 focus:ring-1 focus:ring-green-500"
             aria-label="Buscar"
           />
           <kbd className="absolute right-3 top-1/2 -translate-y-1/2 rounded border border-white/10 bg-zinc-900 px-2 py-0.5 text-xs text-zinc-400">

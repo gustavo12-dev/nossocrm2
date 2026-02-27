@@ -5,7 +5,7 @@ import { Wifi, Database } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 const GLASS_CARD_CLASS =
-  'rounded-xl border border-white/5 bg-zinc-900/30 p-4 backdrop-blur-md transition-all hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]';
+  'bg-zinc-900/30 backdrop-blur-md border border-white/5 rounded-xl p-4 transition-all hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.1)]';
 
 export function DashboardRightSidebar() {
   const data = useDashboardData();
