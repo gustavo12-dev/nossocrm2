@@ -78,14 +78,24 @@ export const prefetchAllRoutes = (): void => {
  * Get the route name from a path
  */
 export const getRouteFromPath = (path: string): RouteName | null => {
-  const cleanPath = path.replace(/^\//, '').split('/')[0] || 'dashboard';
+  const segments = path.replace(/^\//, '').split('/').filter(Boolean);
+  const first = segments[0] || 'dashboard';
+  const second = segments[1];
 
-  if (cleanPath in routeImports) {
-    return cleanPath as RouteName;
+  // /dashboard/boards -> boards, /dashboard/contatos -> contacts, etc.
+  if (first === 'dashboard' && second) {
+    if (second === 'boards') return 'boards';
+    if (second === 'contatos') return 'contacts';
+    if (second === 'james-ia') return 'james-ia';
+    if (second === 'leads-crm' || second === 'financeiro') return 'dashboard';
+  }
+
+  if (first in routeImports) {
+    return first as RouteName;
   }
 
   // Handle aliases
-  if (cleanPath === 'pipeline') return 'boards';
+  if (first === 'pipeline') return 'boards';
 
   return null;
 };

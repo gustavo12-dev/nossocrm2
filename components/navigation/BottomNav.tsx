@@ -25,7 +25,8 @@ export function BottomNav({ onOpenMore }: BottomNavProps) {
         {PRIMARY_NAV.map((item) => {
           const isActive =
             item.href
-              ? pathname === item.href || (item.href === '/boards' && pathname === '/pipeline')
+              ? pathname === item.href ||
+                (pathname === '/pipeline' && item.href === '/dashboard/boards')
               : false;
 
           const Icon = item.icon;

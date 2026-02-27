@@ -13,9 +13,7 @@ export function NavigationRail({ onOpenMore }: NavigationRailProps) {
   const pathname = usePathname();
 
   const isHrefActive = (href: string) =>
-    pathname === href ||
-    (href === '/boards' && pathname === '/pipeline') ||
-    (href === '/pipeline' && pathname === '/boards');
+    pathname === href || (pathname === '/pipeline' && href === '/dashboard/boards');
 
   return (
     <nav

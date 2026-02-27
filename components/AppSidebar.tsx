@@ -45,7 +45,7 @@ const SIDEBAR_WIDTH = 256;
 type NavItem = { to: string; label: string; icon: React.ComponentType<{ size?: number; className?: string }>; prefetch?: RouteName };
 
 const BLOCK_1: NavItem[] = [
-  { to: '/james-ia', label: 'James IA', icon: Sparkles, prefetch: 'james-ia' },
+  { to: '/dashboard/james-ia', label: 'James IA', icon: Sparkles, prefetch: 'james-ia' },
   { to: '#', label: 'Conectar WhatsApp', icon: LinkIcon },
   { to: '#', label: 'Chat ao Vivo', icon: MessageSquare },
 ];
@@ -53,8 +53,8 @@ const BLOCK_1: NavItem[] = [
 const BLOCK_2: NavItem[] = [
   { to: '/inbox', label: 'Inbox', icon: Inbox, prefetch: 'inbox' },
   { to: '/dashboard', label: 'Visão Geral', icon: LayoutDashboard, prefetch: 'dashboard' },
-  { to: '/boards', label: 'Boards', icon: KanbanSquare, prefetch: 'boards' },
-  { to: '/contacts', label: 'Contatos', icon: ContactRound, prefetch: 'contacts' },
+  { to: '/dashboard/boards', label: 'Boards', icon: KanbanSquare, prefetch: 'boards' },
+  { to: '/dashboard/contatos', label: 'Contatos', icon: ContactRound, prefetch: 'contacts' },
   { to: '/activities', label: 'Atividades', icon: CheckSquare, prefetch: 'activities' },
 ];
 
@@ -65,7 +65,7 @@ const BLOCK_3: NavItem[] = [
 ];
 
 const BLOCK_4: NavItem[] = [
-  { to: '#', label: 'Leads CRM', icon: Filter },
+  { to: '/dashboard/leads-crm', label: 'Leads CRM', icon: Filter },
   { to: '#', label: 'Leads Lista', icon: List },
   { to: '#', label: 'Agenda', icon: Calendar },
   { to: '#', label: 'Clientes', icon: UsersRound },
@@ -74,7 +74,7 @@ const BLOCK_4: NavItem[] = [
 ];
 
 const BLOCK_5: NavItem[] = [
-  { to: '#', label: 'Financeiro', icon: DollarSign },
+  { to: '/dashboard/financeiro', label: 'Financeiro', icon: DollarSign },
   { to: '/settings/products', label: 'Produtos e Serviços', icon: Package, prefetch: 'settings' },
   { to: '#', label: 'Funil de Métricas', icon: BarChart3 },
   { to: '/reports', label: 'Relatórios', icon: PieChart, prefetch: 'reports' },
@@ -184,7 +184,9 @@ export function AppSidebar() {
             </p>
             <div className="space-y-0.5">
               {block.items.map((item) => {
-                const isActive = item.to === '/james-ia' ? pathname === '/james-ia' : pathname === item.to || (item.to === '/boards' && pathname === '/pipeline');
+                const isActive =
+                  item.to !== '#' &&
+                  (pathname === item.to || (item.to === '/dashboard/boards' && pathname === '/pipeline'));
                 return (
                   <NavButton
                     key={item.to + item.label}

@@ -41,7 +41,7 @@ import { SkipLink } from '@/lib/a11y';
 import { useResponsiveMode } from '@/hooks/useResponsiveMode';
 import { BottomNav, MoreMenuSheet, NavigationRail } from '@/components/navigation';
 import { AppSidebar } from '@/components/AppSidebar';
-import { ShellHeader } from '@/components/shell/ShellHeader';
+import { Header } from '@/components/Header';
 
 // Lazy load AI Assistant (deprecated - using UIChat now)
 // const AIAssistant = lazy(() => import('./AIAssistant'));
@@ -165,40 +165,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
             <div className="absolute top-[40%] right-0 w-[40%] h-[40%] bg-purple-500/10 rounded-full blur-[100px]" />
           </div>
 
-          {isDesktop ? <ShellHeader /> : (
-            <header className="h-16 glass border-b border-[var(--color-border-subtle)] flex items-center justify-end px-6 z-40 shrink-0" role="banner">
-              <div className="flex items-center gap-4">
-                <button
-                  type="button"
-                  onClick={() => setIsGlobalAIOpen(!isGlobalAIOpen)}
-                  className={`p-2 rounded-full transition-all active:scale-95 focus-visible-ring ${isGlobalAIOpen
-                    ? 'text-primary-600 bg-primary-50 dark:text-primary-400 dark:bg-primary-900/20'
-                    : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10'
-                    }`}
-                >
-                  <Sparkles size={20} aria-hidden="true" />
-                </button>
-                <button
-                  type="button"
-                  onClick={toggleDebugMode}
-                  className={`p-2 rounded-full transition-all active:scale-95 focus-visible-ring ${debugEnabled
-                    ? 'text-purple-600 bg-purple-100 dark:text-purple-400 dark:bg-purple-900/30 ring-2 ring-purple-400/50'
-                    : 'text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10'
-                    }`}
-                >
-                  <Bug size={20} aria-hidden="true" />
-                </button>
-                <NotificationPopover />
-                <button
-                  type="button"
-                  onClick={toggleDarkMode}
-                  className="p-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-white/10 rounded-full transition-all active:scale-95 focus-visible-ring"
-                >
-                  {darkMode ? <Moon size={20} aria-hidden="true" /> : <Sun size={20} aria-hidden="true" />}
-                </button>
-              </div>
-            </header>
-          )}
+          <Header />
 
           <main
             id="main-content"
